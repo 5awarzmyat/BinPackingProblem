@@ -42,28 +42,28 @@ public class Line {
     {
         return end;
     }
-    public void shift_left_line(float a)
+    public void shift_left_line(double a)
     {
         
        start.shift_left_point(a);
        end.shift_left_point(a);
         
     }
-     public void shift_right_line(float a)
+     public void shift_right_line(double a)
     {
         
        start.shift_right_point(a);
        end.shift_right_point(a);
         
     }
-     public void shift_up_line(float a)
+     public void shift_up_line(double a)
     {
         
        start.shift_up_point(a);
        end.shift_up_point(a);
         
     }
-     public void shift_down_line(float a)
+     public void shift_down_line(double a)
     {
         
        start.shift_down_point(a);
