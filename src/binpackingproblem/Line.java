@@ -18,7 +18,8 @@ public class Line {
    private  Point end ; 
     Line()
     {
-        
+        Point a = new Point();
+        Point b = new Point();
     }
     Line(Point start , Point end )
     {
