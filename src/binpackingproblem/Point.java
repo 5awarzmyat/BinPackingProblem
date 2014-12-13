@@ -13,11 +13,11 @@ public class Point {
         this.x=0;
         this.y=0;
     }
-    Point(float x , float y )
+    Point(double x , double y )
     {
         setPoint(x , y );
     }
-    private void  setPoint(float x , float y )
+    private void  setPoint(double x , double y )
     {
         this.x=x ;
         this.y=y;
@@ -30,21 +30,21 @@ public class Point {
     {
         return y ;
     }
-    public void shift_left_point(float a)
+    public void shift_left_point(double a)
     {
         this.x -=a;
 
     }
-     public void shift_right_point(float a)
+     public void shift_right_point(double a)
     {
         this.x +=a;
 
     }
-     public void shift_up_point(float a )
+     public void shift_up_point(double a )
      {
          this.y += a ;
      }
-     public void shift_down_point(float a )
+     public void shift_down_point(double a )
      {
          this.y -= a ;
      }
