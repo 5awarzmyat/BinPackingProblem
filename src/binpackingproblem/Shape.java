@@ -16,6 +16,7 @@ public class Shape {
     Line[] lines;
     float area ;
     Point [] points;
+    double [] angles;
     public Shape(Point [] points) {
         lines = new Line[points.length];
         for(int i = 0 ; i < points.length ; i++){
@@ -48,5 +49,105 @@ public class Shape {
             sum+=(points[i].getXPoint()*points[i+1].getYPoint())-(points[i+1].getXPoint()*points[i].getYPoint());
         }
         return (Math.abs(sum)/2);
+    }
+    double [] get_angles(){
+        
+        angles = new double[points.length];
+        for(int i = 0 ; i < lines.length ; i++){
+            angles[i] = 180.0 - lines[(i+1)%lines.length].calculate_angle() + lines[i%lines.length].calculate_angle();
+        }
+        return angles;
+    }
+    Line get_right_end(){
+        double max1 = 0 ; 
+        double max2 = 0 ; 
+        Point First = new Point();
+        Point Second = new Point();
+        for(Line l : lines ){
+            if(l.getStart().getXPoint() >= max1){
+                max1 = l.getStart().getXPoint();
+                First = l.getStart();
+            }
+        }
+         for(Line l : lines ){
+             if(l.getStart().equals(First))
+                 continue;
+             else if((l.getStart().getXPoint() >= max2)){
+                max2 = l.getStart().getXPoint();
+                Second = l.getStart();
+            }   
+           
+        }
+         Line rightEnd = new Line(First, Second);
+         return rightEnd;
+    }
+    Line get_left_end(){
+        double min1 = 0 ; 
+        double min2 = 0 ; 
+        Point First = new Point();
+        Point Second = new Point();
+        for(Line l : lines ){
+            if(l.getStart().getXPoint() <= min1){
+                min1 = l.getStart().getXPoint();
+                First = l.getStart();
+            }
+        }
+          for(Line l : lines ){
+             if(l.getStart().equals(First))
+                 continue;
+             else if((l.getStart().getXPoint() <= min2)){
+                min1 = l.getStart().getXPoint();
+                Second = l.getStart();
+            }   
+           
+        }
+         Line leftEnd = new Line(First, Second);
+         return leftEnd;
+    }
+    Line get_bottom_end(){
+        double min1 = 0 ; 
+        double min2 = 0 ; 
+        Point First = new Point();
+        Point Second = new Point();
+        for(Line l : lines ){
+            if(l.getStart().getYPoint() <= min1){
+                min1 = l.getStart().getYPoint();
+                First = l.getStart();
+            }
+        }
+         for(Line l : lines ){
+             if(l.getStart().equals(First))
+                 continue;
+             else if((l.getStart().getYPoint() <= min2)){
+                min1 = l.getStart().getYPoint();
+                Second = l.getStart();
+            }   
+           
+        }
+         Line bottomEnd = new Line(First, Second);
+         return bottomEnd;
+    }
+    Line get_upper_end(){
+        double max1 = 0 ; 
+        double max2 = 0 ; 
+        Point First = new Point();
+        Point Second = new Point();
+        for(Line l : lines ){
+            if(l.getStart().getYPoint() >= max1){
+                max1 = l.getStart().getYPoint();
+                First = l.getStart();
+            }
+        }
+         for(Line l : lines ){
+             if(l.getStart().equals(First))
+                 continue;
+             else if((l.getStart().getYPoint() >= max2)){
+                max2 = l.getStart().getYPoint();
+                Second = l.getStart();
+            }   
+           
+        }
+         Line upperEnd = new Line(First, Second);
+         return upperEnd;
     }
 }
